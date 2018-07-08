@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为IUserDao接口方法提供sql语句配置 -->
+<mapper namespace="com.chen.dao.IUserDao">
+    <cache eviction="LRU" type="com.chen.util.RedisCache" />
+    <select id="selectUser" resultType="User"  useCache="false">
+        SELECT * FROM user
+    </select>
+    <select id="selectFindUser" resultType="User"  useCache="true">
+        SELECT * FROM user where id=#{id}
+    </select>
+
+</mapper>
